@@ -1,9 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import './index.css'
+import App from './App'
+import NotFound from "./components/errors/NotFound"
+import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = () => (
+    <Router>
+        <Switch>
+            <Route exact path='/' component={App} />
+            <Route component={NotFound} />
+        </Switch>
+    </Router>
+)
 
-serviceWorker.register();
+ReactDOM.render(<Root />, document.getElementById('root'))
+
+serviceWorker.register()
