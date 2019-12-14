@@ -3,8 +3,8 @@
   "name": "Le Blog d'Alexandre - Rendons le développement informatique accessible à tous",
   "icons": [
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.jpg",
+      "type": "image/jpeg",
       "sizes": "200x200"
     }
   ],
