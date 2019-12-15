@@ -1,4 +1,4 @@
-.App .title {
+.title {
     width: 100%;
     line-height: 60px;
     text-align: center;
@@ -6,12 +6,12 @@
     color: #fff;
 }
 
-.App .title a {
+.title a {
     text-decoration: none;
     color: inherit;
 }
 
-.App .title a:hover {
+.title a:hover {
     color: #eee;
 }
 
@@ -53,4 +53,18 @@
 .Login .logout-btn:hover {
     background-color: #fff;
     color: #2E7D32;
+}
+
+.NotFound {
+    text-align: center;
+}
+
+.NotFound h2 {
+    margin-top: 2rem;
+    font-size: 32px;
+    line-height: 60px;
+}
+
+.NotFound p {
+    color: #777;
 }
