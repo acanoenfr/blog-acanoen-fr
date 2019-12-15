@@ -1,0 +1,56 @@
+.App .title {
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    background-color: #2E7D32;
+    color: #fff;
+}
+
+.App .title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.App .title a:hover {
+    color: #eee;
+}
+
+.Login {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    background: linear-gradient(#fff, #ccc);
+    padding-bottom: 20px;
+}
+
+.Login .google-btn {
+    border: none;
+    background-color: #dd4b39;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.Login .google-btn:hover {
+    background-color: #fff;
+    color: #dd4b39;
+}
+
+.Login .logout-btn {
+    border: none;
+    background-color: #2E7D32;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.Login .logout-btn:hover {
+    background-color: #fff;
+    color: #2E7D32;
+}
