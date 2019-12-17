@@ -1,59 +1,49 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import './App.css'
 import firebase from "firebase/app"
 import 'firebase/auth'
 import base, { firebaseApp } from "./base"
 import Login from "./components/Login"
+import AddArticle from "./components/AddArticle"
 
 class App extends Component {
     state = {
-        uid: null
+        posts: {}
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.handleAuth({ user })
-            }
+        this.ref = base.syncState('/posts', {
+            context: this,
+            state: 'posts'
         })
     }
 
-    handleAuth = async authData => {
-        this.setState({
-            uid: authData.user.uid
-        })
+    componentWillUnmount() {
+        base.removeBinding(this.ref)
     }
 
-    authenticate = () => {
-        const authProvider = new firebase.auth.GoogleAuthProvider()
-        firebaseApp
-            .auth()
-            .signInWithPopup(authProvider)
-            .then(this.handleAuth)
-    }
-
-    logout = async () => {
-        await firebase.auth().signOut()
-        this.setState({
-            uid: null
-        })
+    addPost = post => {
+        const { posts } = this.state
+        posts[post.slug] = {
+            title: post.title,
+            content: post.content,
+            created_at: Date.now()
+        }
+        this.setState({ posts })
     }
 
     render() {
-        let isLogged = (
-            <div className="Login">
-                <button className="logout-btn" onClick={this.logout}>Me déconnecter</button>
-            </div>
-        )
-        if (!this.state.uid) {
-            isLogged = <Login authenticate={this.authenticate} />
+        let isLogged = <Fragment />
+        if (this.props.uid) {
+            isLogged = (
+                <Fragment>
+                    <AddArticle addPost={this.addPost} />
+                </Fragment>
+            )
         }
         return (
             <div className="App">
-                <h1 className="title"><a href="/">Le Blog d'Alexandre</a></h1>
-                <footer className="footer">
-                    {isLogged}
-                </footer>
+                {isLogged}
             </div>
         )
     }

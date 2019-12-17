@@ -68,3 +68,77 @@
 .NotFound p {
     color: #777;
 }
+
+.add-article {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.card {
+    background-color: rgba(220, 220, 220, .2);
+    border-radius: 10px;
+    margin: 2rem;
+}
+
+.card h2 {
+    background-color: #2E7D32;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    line-height: 40px;
+}
+
+.add-article input, .add-article textarea {
+    margin: .5rem;
+    width: 95%;
+    border: none;
+    border-bottom: 3px solid #2E7D32;
+    background-color: #eee;
+    height: 30px;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.add-article textarea {
+    height: 200px;
+}
+
+.add-article button {
+    margin: .5rem;
+    padding: .5rem;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: #2E7D32;
+    color: #fff;
+}
+
+.add-article button:focus {
+    outline: none;
+}
+
+.add-article button:hover {
+    border-color: #2E7D32;
+    background-color: #fff;
+    color: #2E7D32;
+}
+
+.post {
+    margin: 1.2rem .8rem;
+}
+
+.post-title {
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.post-meta {
+    margin-top: .5rem;
+    font-size: .8rem;
+    color: #444;
+}
+
+.post-content {
+    margin-top: .8rem;
+}
