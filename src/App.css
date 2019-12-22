@@ -124,13 +124,12 @@
     color: #2E7D32;
 }
 
-.post {
+.post, .posts {
     margin: 1.2rem .8rem;
 }
 
 .post-title {
-    font-size: 2.4rem;
-    text-align: center;
+    font-size: 2rem;
 }
 
 .post-meta {
