@@ -141,3 +141,13 @@
 .post-content {
     margin-top: .8rem;
 }
+
+.del-post {
+    outline: none;
+}
+
+.del-post:hover {
+    border-color: #2E7D32;
+    background-color: #fff;
+    color: #2E7D32;
+}

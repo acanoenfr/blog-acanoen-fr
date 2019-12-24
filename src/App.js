@@ -33,6 +33,12 @@ class App extends Component {
         this.setState({ posts })
     }
 
+    delPost = key => {
+        const { posts } = this.state
+        posts[key] = null
+        this.setState({ posts })
+    }
+
     render() {
         let isLogged = <Fragment />
         if (this.props.uid) {
@@ -47,7 +53,7 @@ class App extends Component {
                 <div className="posts-one">
                     <h2 className="post-title">{this.state.posts[key].title}</h2>
                     <p className="post-meta">Posté le {(new Date(this.state.posts[key].created_at)).toLocaleString()}</p>
-                    <Link to={`/${key}`}>Lire l'article</Link>
+                    <Link to={`/${key}`}>Lire l'article</Link> {this.props.uid ? <button className="del-post" onClick={() => this.delPost(key)}>Supprimer</button> : ""}
                 </div>
             ))
         return (
