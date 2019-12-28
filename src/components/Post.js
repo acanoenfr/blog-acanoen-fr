@@ -31,12 +31,18 @@ class Post extends Component {
     }
 
     render() {
+        let isLogged = <Fragment />
+        if (this.props.uid) {
+            isLogged = (
+                <ModArticle slug={this.props.match.params.slug} />
+            )
+        }
         return (
             <div className="post">
                 <h2 className="post-title">{this.state.post.title}</h2>
                 <p className="post-meta">Posté le {(new Date(this.state.post.created_at)).toLocaleString()}</p>
                 <div className="post-content" dangerouslySetInnerHTML={this.renderContent(this.state.post.content)}></div>
-                <ModArticle slug={this.props.match.params.slug} />
+                {isLogged}
             </div>
         )
     }

@@ -61,7 +61,7 @@ class Root extends Component {
                         <Route exact path='/'>
                             <App uid={this.state.uid} />
                         </Route>
-                        <Route path='/:slug' component={Post} />
+                        <Route path='/:slug' render={props => <Post {...props} uid={this.state.uid} />} />
                         <Route component={NotFound} />
                     </Switch>
                 </Router>
