@@ -25,7 +25,9 @@ class Root extends Component {
 
     handleAuth = async authData => {
         this.setState({
-            uid: authData.user.uid
+            uid: authData.user.uid,
+            email: authData.user?.email,
+            name: authData.user.displayName
         })
     }
 
@@ -40,7 +42,9 @@ class Root extends Component {
     logout = async () => {
         await firebase.auth().signOut()
         this.setState({
-            uid: null
+            uid: null,
+            email: null,
+            name: null
         })
     }
 
@@ -59,9 +63,9 @@ class Root extends Component {
                 <Router>
                     <Switch>
                         <Route exact path='/'>
-                            <App uid={this.state.uid} />
+                            <App uid={this.state.uid} name={this.state.name} email={this.state.email} />
                         </Route>
-                        <Route path='/:slug' render={props => <Post {...props} uid={this.state.uid} />} />
+                        <Route path='/:slug' render={props => <Post {...props} uid={this.state.uid} name={this.state.name} email={this.state.email} />} />
                         <Route component={NotFound} />
                     </Switch>
                 </Router>

@@ -28,6 +28,7 @@ class App extends Component {
         posts[post.slug] = {
             title: post.title,
             content: post.content,
+            author: this.props.name.split(' ')[0],
             created_at: Date.now()
         }
         this.setState({ posts })
@@ -35,13 +36,15 @@ class App extends Component {
 
     delPost = key => {
         const { posts } = this.state
-        posts[key] = null
-        this.setState({ posts })
+        if (window.confirm("Êtes-vous sûr de supprimer cet article ?")){
+            posts[key] = null
+            this.setState({ posts })
+        }
     }
 
     render() {
         let isLogged = <Fragment />
-        if (this.props.uid) {
+        if (this.props.uid === "M0T1BsZIxLS0ZbdTKPcRtvVLtV03") {
             isLogged = (
                 <Fragment>
                     <AddArticle addPost={this.addPost} />
@@ -52,8 +55,8 @@ class App extends Component {
             .map(key => (
                 <div className="posts-one">
                     <h2 className="post-title">{this.state.posts[key].title}</h2>
-                    <p className="post-meta">Posté le {(new Date(this.state.posts[key].created_at)).toLocaleString()}</p>
-                    <Link to={`/${key}`}>Lire l'article</Link> {this.props.uid ? <button className="del-post" onClick={() => this.delPost(key)}>Supprimer</button> : ""}
+                    <p className="post-meta">Posté le {(new Date(this.state.posts[key].created_at)).toLocaleString()} par {this.state.posts[key].author}</p>
+                    <Link to={`/${key}`}>Lire l'article</Link> {this.props.uid === "M0T1BsZIxLS0ZbdTKPcRtvVLtV03" ? <button className="del-post" onClick={() => this.delPost(key)}>Supprimer</button> : ""}
                 </div>
             ))
         return (
