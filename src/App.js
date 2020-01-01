@@ -55,7 +55,7 @@ class App extends Component {
             .map(key => (
                 <div className="posts-one">
                     <h2 className="post-title">{this.state.posts[key].title}</h2>
-                    <p className="post-meta">Posté le {(new Date(this.state.posts[key].created_at)).toLocaleString()} par {this.state.posts[key].author}</p>
+                    <p className="post-meta">Posté le {(new Date(this.state.posts[key].created_at)).toLocaleDateString()} par {this.state.posts[key].author}</p>
                     <Link to={`/${key}`}>Lire l'article</Link> {this.props.uid === "M0T1BsZIxLS0ZbdTKPcRtvVLtV03" ? <button className="del-post" onClick={() => this.delPost(key)}>Supprimer</button> : ""}
                 </div>
             ))
