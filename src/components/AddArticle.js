@@ -4,11 +4,20 @@ class AddArticle extends Component {
     state = {
         title: "",
         slug: "",
-        content: ""
+        content: "",
+        image: {}
     }
 
-    handleChange = event => {
-        const { name, value } = event.target
+    constructor(props) {
+        super(props);
+        this.fileInput = React.createRef();
+    }
+
+    handleChange = async event => {
+        let { name, value } = event.target
+        if (name === "image") {
+            value = this.fileInput.current.files[0]
+        }
         this.setState({ [name]: value })
     }
 
@@ -30,6 +39,7 @@ class AddArticle extends Component {
                     <input onChange={this.handleChange} type="text" name="title" placeholder="Titre de l'article" />
                     <input onChange={this.handleChange} type="text" name="slug" placeholder="Slug de l'article" />
                     <textarea onChange={this.handleChange} rows="15" name="content" placeholder="Contenu de l'article" />
+                    <input ref={this.fileInput} onChange={this.handleChange} type="file" name="image" placeholder="Image de l'article" />
                     <button type="submit">Publier l'article</button>
                 </form>
             </div>

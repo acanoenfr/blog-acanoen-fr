@@ -13,7 +13,6 @@ class ModArticle extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.ref = base.syncState(`/posts/${this.props.slug}`, {
             context: this,
             state: 'post'
